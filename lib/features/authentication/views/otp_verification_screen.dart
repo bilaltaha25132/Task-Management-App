@@ -29,7 +29,6 @@ class OTPVerificationScreen extends ConsumerWidget {
                 onCompleted: (pin) async {
                   final navigator = Navigator.of(context);
                   CoreUtils.showLoader(context);
-                  // TODO: Verify OTP: Send OTP to Firebase for verification
                   await ref.read(authControllerProvider).verifyOTP(
                         context: context,
                         verificationId: verificationId,

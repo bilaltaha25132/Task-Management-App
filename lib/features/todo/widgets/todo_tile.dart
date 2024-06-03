@@ -58,11 +58,10 @@ class TodoTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FadingText(
-                      task.title!,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    FadingText(task.title!,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.ellipsis),
                     const WhiteSpace(height: 3),
                     FadingText(
                       task.description!,

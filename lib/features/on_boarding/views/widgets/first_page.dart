@@ -20,7 +20,7 @@ class FirstPage extends StatelessWidget {
           const FadingText(
             'Task Management App',
             textAlign: TextAlign.center,
-            fontSize: 30,
+            fontSize: 25,
             fontWeight: FontWeight.w500,
             color: null,
           ),

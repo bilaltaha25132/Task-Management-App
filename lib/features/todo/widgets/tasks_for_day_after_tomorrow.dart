@@ -21,7 +21,7 @@ class TasksForDayAfterTomorrow extends HookConsumerWidget {
           return TaskExpansionTile(
             title: 'More Tasks',
             color: colour,
-            subTitle: "Excluding  Today's and Tomorrow's task",
+            subTitle: "Excluding Today's and Tomorrow's task",
             children: snapshot.data!.map((task) {
               final isLast = snapshot.data!
                       .indexWhere((element) => element.id == task.id) ==
