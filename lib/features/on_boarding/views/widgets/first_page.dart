@@ -18,7 +18,7 @@ class FirstPage extends StatelessWidget {
           Image.asset(ImagesRes.todo),
           const WhiteSpace(height: 100),
           const FadingText(
-            'ToDo with Riverpod',
+            'Task Management App',
             textAlign: TextAlign.center,
             fontSize: 30,
             fontWeight: FontWeight.w500,
