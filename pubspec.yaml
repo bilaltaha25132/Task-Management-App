@@ -38,6 +38,8 @@ dev_dependencies:
   riverpod_generator: ^2.4.0
   flutter_test:
     sdk: flutter
+  mockito: ^5.4.4
+
 
   flutter_lints: ^3.0.0
 
