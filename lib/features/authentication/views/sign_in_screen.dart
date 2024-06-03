@@ -1,5 +1,4 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +57,6 @@ class SignInScreen extends HookConsumerWidget {
                       showCountryPicker(
                         context: context,
                         onSelect: (code) {
-                          // Add your code handling logic here
                           ref
                               .read(countryCodeProvider.notifier)
                               .changeCountry(code);
@@ -71,18 +69,14 @@ class SignInScreen extends HookConsumerWidget {
                             top: Radius.circular(12),
                           ),
                           textStyle: GoogleFonts.poppins(
-                            // Add your text style properties here
                             color: Colours.light,
                           ),
                           searchTextStyle: GoogleFonts.poppins(
-                            // Add your search text style properties here
                             color: Colours.light,
                           ),
                           inputDecoration: InputDecoration(
                             labelText: 'Search',
-                            labelStyle: GoogleFonts.poppins(
-                                // Add your label style properties here
-                                ),
+                            labelStyle: GoogleFonts.poppins(),
                             hintStyle: GoogleFonts.poppins(
                               color: Colours.lightGrey,
                             ),

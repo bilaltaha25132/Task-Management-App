@@ -64,7 +64,6 @@ class AuthenticationRepository {
       final navigator = Navigator.of(context);
 
       if (userCredential.user != null) {
-        // TODO: Save User Data to the Device
         await DBHelper.createUser(isVerified: true);
         navigator.pushAndRemoveUntil(
           MaterialPageRoute(
@@ -76,7 +75,6 @@ class AuthenticationRepository {
         showSnack('Error Occurred, Failed to Sign up User');
       }
     } on FirebaseException catch (e) {
-      // TODO
       CoreUtils.showSnackBar(
         context: context,
         message: '${e.code}: ${e.message}',

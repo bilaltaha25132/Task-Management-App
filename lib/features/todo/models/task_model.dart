@@ -46,4 +46,10 @@ class TaskModel {
         'remind': remind ? 1 : 0,
         'repeat': repeat ? 1 : 0,
       };
+
+  // Method to check if the task time has run out
+  bool isTimeUp() {
+    return DateTime.now()
+        .isAfter(endTime!.subtract(const Duration(seconds: 1)));
+  }
 }

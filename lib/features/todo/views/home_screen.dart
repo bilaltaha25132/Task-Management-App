@@ -10,6 +10,7 @@ import 'package:todo_app/core/helper/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/features/todo/app/task_provider.dart';
 import 'package:todo_app/features/todo/views/add_task_screen.dart';
+import 'package:todo_app/features/todo/views/progress_screen.dart';
 import 'package:todo_app/features/todo/widgets/completed_tasks.dart';
 
 import '../../authentication/views/sign_in_screen.dart';
@@ -23,6 +24,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabController = useTabController(initialLength: 2);
+    ref.read(taskProvider.notifier).refresh();
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -32,7 +34,10 @@ class HomeScreen extends HookConsumerWidget {
       fontWeight: FontWeight.bold,
     );
 
-    ref.read(taskProvider.notifier).refresh();
+    // Manually trigger refresh for testing
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(taskProvider.notifier).refresh();
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -73,26 +78,44 @@ class HomeScreen extends HookConsumerWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    IconButton.filled(
-                      style: IconButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(9),
-                        ), // RoundedRectangleBorder
-                        backgroundColor: Colours.light,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const AddOrEditTaskScreen(),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            FontAwesome.line_chart,
+                            color: Colours.light,
                           ),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        color: Colours.darkBackground,
-                      ), // Icon
-                    ), // IconButton.filled
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ProgressScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        IconButton.filled(
+                          style: IconButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(9),
+                            ), // RoundedRectangleBorder
+                            backgroundColor: Colours.light,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AddOrEditTaskScreen(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.add,
+                            color: Colours.darkBackground,
+                          ), // Icon
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 const WhiteSpace(height: 20),
@@ -103,7 +126,7 @@ class HomeScreen extends HookConsumerWidget {
                     FontAwesome.sliders,
                     color: Colours.lightGrey,
                   ), // Icon
-                ), // FilledField
+                ),
               ],
             ),
           ),

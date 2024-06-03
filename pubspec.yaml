@@ -29,6 +29,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   sqflite: ^2.3.3+1
   intl: ^0.17.0
+  fl_chart: ^0.68.0
 
 
 
